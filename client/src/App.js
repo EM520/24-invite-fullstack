@@ -1,13 +1,9 @@
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from 'react-router-dom'
-import React from 'react';
-import './App.css';
-import GoingPage from './features/invite/GoingPage';
-import NotGoingPage from './features/invite/NotGoingPage';
-import InvitePage from './features/invite/InvitePage';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import React from "react";
+import "./App.css";
+import GoingPage from "./features/invite/GoingPage";
+import NotGoingPage from "./features/invite/NotGoingPage";
+import InvitePage from "./features/invite/InvitePage";
 
 function App() {
   return (

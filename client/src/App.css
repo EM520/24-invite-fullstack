@@ -1,0 +1,161 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.cardNav {
+  margin: 0 auto;
+  width: 30%;
+  display: flex;
+  justify-content: space-around;
+  padding-top: 30px;
+  padding-bottom: 10px;
+  font-weight: bold;
+}
+.inviteLink {
+  text-decoration: none;
+  color: black;
+}
+.nameCard {
+  margin: 0 auto;
+  width: 25%;
+  height: 500px;
+
+  padding-top: 50px;
+  background-color: #dedede;
+}
+
+.cardPic {
+  border-radius: 50%;
+  margin-left: 90px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.cardInfo {
+  border-top: 2px solid rgb(236, 232, 232);
+  border-bottom: 2px solid rgb(236, 232, 232);
+  height: 150px;
+  padding-top: 10px;
+  line-height: 2.5;
+  text-align: center;
+  font-size: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(114, 107, 107);
+  font-weight: bold;
+}
+
+.container-btn {
+  /* background-color:rgb(238, 229, 241); */
+
+  height: 100px;
+  display: flex;
+  justify-content: space-around;
+}
+.invite-btn-1 {
+  background-color: #e53f33;
+  width: 100px;
+  height: 40px;
+  margin-top: 20px;
+  text-align: center;
+  padding-top: 5px;
+  font-size: 30px;
+  color: whitesmoke;
+}
+.invite-btn-2 {
+  background-color: #46a44a;
+  width: 100px;
+  height: 40px;
+  margin-top: 20px;
+  text-align: center;
+  padding-top: 5px;
+  font-size: 30px;
+  color: whitesmoke;
+}
+
+/* notGoingList part */
+.notGoingList {
+  width: 90%;
+  height: 1000px;
+
+  margin: 0 auto;
+  margin-top: 50px;
+  align-items: center;
+}
+
+.notGoingCard {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  column-gap: 10px;
+  row-gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+.notgoingli {
+  background-color: #dedede;
+  width: 260px;
+  height: 280px;
+  text-align: center;
+}
+.notGoingImg {
+  border-radius: 50%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 3px solid rgb(134, 132, 132);
+  height: 130px;
+  width: 130px;
+}
+.notGoingCardInfo {
+  border-top: 2px solid rgb(236, 232, 232);
+  padding-top: 15px;
+  line-height: 2;
+  font-size: 13px;
+}
+
+/* goingList part */
+.backHomeLink{
+  font-weight: bold;
+  font-size: large;
+  color: black;
+  text-decoration: none;
+  line-height: 60px;
+}
+.goingList {
+  width: 90%;
+  height: 1000px;
+
+  margin: 0 auto;
+  margin-top: 50px;
+  align-items: center;
+}
+
+.goingCard {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  column-gap: 10px;
+  row-gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+.goingli {
+  background-color: #dedede;
+  width: 260px;
+  height: 280px;
+  text-align: center;
+}
+.goingImg {
+  border-radius: 50%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 3px solid rgb(134, 132, 132);
+  height: 130px;
+  width: 130px;
+}
+.goingCardInfo {
+  border-top: 2px solid rgb(236, 232, 232);
+  padding-top: 15px;
+  line-height: 2;
+  font-size: 13px;
+}
