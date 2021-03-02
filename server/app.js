@@ -3,7 +3,7 @@ const app = express();
 const axios = require("axios");
 const notGoing = [];
 const going = [];
-const randomUsers = [];
+// const users = [];
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -15,13 +15,18 @@ app.get("/randomUser", (req, res) => {
     res.json(resp.data.results);
   });
 });
-//post
-app.post("/randomUser", (req, res) => {
-  console.log(req.body);
-  const user = req.body;
-  randomUsers.push({ ...user, id: randomUsers.length + 1 });
-  res.json(user);
+// post going and outgoing to backend portion
+app.get("/mark-invitee", (req, res) => {
+  // res.json(users);
+  res.json({going,notGoing});
 });
+// post all users include both going and outgoing to backend portion
+// app.post("/mark-invitee", (req, res) => {
+//   const incomingUser = req.body;
+//   users.push(incomingUser);
+//   res.json(users)
+  
+// });
 //going users backend portion
 //get
 app.get("/goingUsers", (req, res) => {
