@@ -1,28 +1,28 @@
-import React, {  useEffect } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-
-// import { dispatch } from "./inviteSlice";
+import { FaCheck, FaTimes } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import {
   selectUser,
   selectGoing,
   selectNotGoing,
   getUserAsync,
+  goingAsync,
+  notGoingAsync,
   userNotGoing,
   userGoing,
- 
 } from "./inviteSlice";
 
 export default function InvitePage() {
- 
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
-  const goings = useSelector(selectGoing)
-  const notGoings = useSelector(selectNotGoing)
+  const goings = useSelector(selectGoing);
+  const notGoings = useSelector(selectNotGoing);
   // refactor to use slice
   useEffect(() => {
     dispatch(getUserAsync());
-    
+    dispatch(notGoingAsync());
+    dispatch(goingAsync());
   }, []);
 
   console.log(user);
@@ -51,23 +51,31 @@ export default function InvitePage() {
               <br />
               <div className="cardInfo">
                 <p>
-                  Name: {item.name.first} {item.name.last}
+                  <strong>Name: </strong>
+                  {item.name.first} {item.name.last}
                 </p>
-                <p>Phone: {item.cell}</p>
-                <p>Email: {item.email}</p>
+                <p>
+                  <strong>Phone: </strong>
+                  {item.cell}
+                </p>
+                <p>
+                  <strong>Email: </strong> {item.email}
+                </p>
               </div>
               <div className="container-btn">
                 <botton
                   className="invite-btn-1"
-                  onClick={() => dispatch(userNotGoing(item))}
+                  onClick={() => dispatch(userNotGoing({ ...item, isGoing: false }))}
                 >
-                  X
+                  <FaTimes />
                 </botton>
                 <botton
                   className="invite-btn-2"
-                  onClick={() => dispatch(userGoing(item))}
+                  onClick={() =>
+                    dispatch(userGoing({ ...item, isGoing: true }))
+                  }
                 >
-                  √
+                  <FaCheck />
                 </botton>
               </div>
             </div>

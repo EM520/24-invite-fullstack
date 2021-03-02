@@ -7,7 +7,6 @@ export const inviteSlice = createSlice({
     going: [],
     notGoing: [],
     user: [],
-    
   },
   reducers: {
     // addToGoing: (state, action) => {
@@ -17,14 +16,12 @@ export const inviteSlice = createSlice({
     //   state.notGoing.push({ ...action.payload });
     // },
     setNotGoing: (state, action) => {
-      state.notGoing=action.payload
-      
+      state.notGoing = action.payload;
     },
     setGoing: (state, action) => {
-      state.going =action.payload
-    
+      state.going = action.payload;
     },
-   
+
     setUser: (state, action) => {
       state.user = action.payload;
     },
@@ -45,21 +42,32 @@ export const inviteSlice = createSlice({
   },
 });
 
-export const {
-  setGoing,
-  setNotGoing,
-  setUser,
-} = inviteSlice.actions;
+export const { setGoing, setNotGoing, setUser } = inviteSlice.actions;
 
+// Post notgoing user into  going db server
 export const userNotGoing = (user) => (dispatch) => {
   axios.post("/notGoingUsers", user).then((resp) => {
     dispatch(getUserAsync());
+    dispatch(notGoingAsync());
   });
+  //Post notgoing user into  mark-invitee db server
+  // axios.post("/mark-invitee", user).then((resp) => {
+  //   dispatch(getUserAsync());
+  //   dispatch(notGoingAsync());
+  // });
 };
+
+// Post going user into  going db server
 export const userGoing = (user) => (dispatch) => {
   axios.post("/goingUsers", user).then((resp) => {
     dispatch(getUserAsync());
+    dispatch(goingAsync());
   });
+  //Post going user into  mark-invitee db server
+  // axios.post("/mark-invitee", user).then((resp) => {
+  //   dispatch(getUserAsync());
+  //   dispatch(goingAsync());
+  // });
 };
 
 // The function below is called a thunk and allows us to perform async logic. It
@@ -72,18 +80,35 @@ export const getUserAsync = () => (dispatch) => {
     dispatch(setUser(resp.data));
   });
 };
-
+// Get notgoing user from notgoing db server
 export const notGoingAsync = () => (dispatch) => {
   axios.get("/notGoingUsers").then((resp) => {
     dispatch(setNotGoing(resp.data));
   });
 };
-
+// Get going user from notgoing db server
 export const goingAsync = () => (dispatch) => {
   axios.get("/goingUsers").then((resp) => {
     dispatch(setGoing(resp.data));
   });
 };
+
+// Get going and notgoing user from mark-invitee db server by filter
+// export const notGoingAsync = () => (dispatch) => {
+//   axios.get("/mark-invitee").then((resp) => {
+//     const users = resp.data;
+//     const filteredUsers = users.filter((item) => item.isGoing == false);
+//     dispatch(setNotGoing(filteredUsers));
+//   });
+// };
+
+// export const goingAsync = () => (dispatch) => {
+//   axios.get("/mark-invitee").then((resp) => {
+//     const users = resp.data;
+//     const filteredUsers = users.filter((item) => item.isGoing == true);
+//     dispatch(setGoing(filteredUsers));
+//   });
+// };
 
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of
@@ -91,8 +116,6 @@ export const goingAsync = () => (dispatch) => {
 export const selectGoing = (state) => state.goings.going;
 export const selectNotGoing = (state) => state.notGoings.notGoing;
 export const selectUser = (state) => state.user.user;
-export const selectGoingQty = (state) => state.goingQty.goingQty;
-export const selectNotGoingQty = (state) => state.notGoingQty.notGoingQty;
 
 
 export default inviteSlice.reducer;
